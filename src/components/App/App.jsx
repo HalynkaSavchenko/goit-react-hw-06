@@ -6,25 +6,17 @@ import { useEffect, useState } from 'react';
 import css from './App.module.css'
 
 export default function App() {
-    const[contact, setContact] = useState(() => {
-        const savedContact = localStorage.getItem('saved-contact');  
-        if(savedContact !== null) {
-            return JSON.parse(savedContact);
-        }
-        return initialData
-    });
-
-    useEffect(() => {
-        localStorage.setItem('saved-contact', JSON.stringify(contact));
-    }, [contact]);
-
 
     return(
         <div className={css.container}>
-            <h1 className={css.title}>Phonebook</h1>
-            <ContactForm />
-            <SearchBox />
-            <ContactList />
+            <div className={css.formwrapper}>
+              <h1 className={css.title}>Phonebook</h1>
+              <ContactForm />
+              <SearchBox />
+            </div>
+            <div className={css.listwrapper}>
+              <ContactList /> 
+            </div>
         </div>
     )
 }
